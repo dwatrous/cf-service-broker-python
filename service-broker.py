@@ -9,7 +9,7 @@ X_BROKER_API_VERSION = 2.3
 X_BROKER_API_VERSION_NAME = 'X-Broker-Api-Version'
 
 # UPDATE THIS FOR YOUR ECHO SERVICE DEPLOYMENT
-service_base = "16.98.49.183:8090"  # echo-service.stackato.danielwatrous.com
+service_base = "localhost"
 
 # service endpoint templates
 service_instance = "http://"+service_base+"/echo/{{instance_id}}"
@@ -18,23 +18,23 @@ service_dashboard = "http://"+service_base+"/echo/dashboard/{{instance_id}}"
 
 # plans
 big_plan = {
-          "id": "big_0010",
+          "id": "big_0001",
           "name": "large",
-          "description": "A large dedicated database with 10GB storage quota, 512MB of RAM, and 100 connections",
+          "description": "A large dedicated service with a big storage quota, lots of RAM, and many connections",
           "free": False
         }
 
 small_plan = {
           "id": "small_0001",
           "name": "small",
-          "description": "A small shared database with 100mb storage quota and 10 connections"
+          "description": "A small shared service with a small storage quota and few connections"
         }
 
 # dashboard
 dashboard_details = {
           "id": "client-id-1",
           "secret": "secret-1",
-          "redirect_uri": "http://echo-service.stackato.danielwatrous.com/echo/dashboard"
+          "redirect_uri": "http://"+service_base+"/echo/dashboard"
         }
 
 # services
