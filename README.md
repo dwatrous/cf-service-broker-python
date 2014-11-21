@@ -12,6 +12,9 @@ CloudFoundry (and Stackato and HP Helion Development Platform) provide a Service
 
 The service broker can be run easily on any system that satisfies the dependiencies above. This repository also contains artifacts that make it easy to deploy to Stackato or HP Helion Development Platform.
 
+## Update the echo service URL/IP
+The `service_base` variable needs to be updated to point to your [running echo service](https://github.com/dwatrous/cf-echo-service) before starting the service broker.
+
 ## Windows
 Clone this repository on to your Windows machine. Change into the directory where the files were cloned and use the python executable to run the script. The console session will look like the snippet below.
 

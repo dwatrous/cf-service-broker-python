@@ -8,7 +8,9 @@ import os
 X_BROKER_API_VERSION = 2.3
 X_BROKER_API_VERSION_NAME = 'X-Broker-Api-Version'
 
+# UPDATE THIS FOR YOUR ECHO SERVICE DEPLOYMENT
 service_base = "16.98.49.183:8090"  # echo-service.stackato.danielwatrous.com
+
 # service endpoint templates
 service_instance = "http://"+service_base+"/echo/{{instance_id}}"
 service_binding = "http://"+service_base+"/echo/{{instance_id}}/{{binding_id}}"
