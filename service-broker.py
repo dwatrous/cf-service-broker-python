@@ -9,7 +9,7 @@ X_BROKER_API_VERSION = 2.3
 X_BROKER_API_VERSION_NAME = 'X-Broker-Api-Version'
 
 # UPDATE THIS FOR YOUR ECHO SERVICE DEPLOYMENT
-service_base = "localhost"
+service_base = "localhost"  # echo-service.stackato.danielwatrous.com
 
 # service endpoint templates
 service_instance = "http://"+service_base+"/echo/{{instance_id}}"
@@ -30,17 +30,10 @@ small_plan = {
           "description": "A small shared service with a small storage quota and few connections"
         }
 
-# dashboard
-dashboard_details = {
-          "id": "client-id-1",
-          "secret": "secret-1",
-          "redirect_uri": "http://"+service_base+"/echo/dashboard"
-        }
-
 # services
-echo_service = {'id': 'echo_service', 'name': 'Echo Service', 'description': 'Echo back the value received', 'bindable': True, 'plans': [big_plan], 'dashboard_client': dashboard_details}
+echo_service = {'id': 'echo_service', 'name': 'Echo Service', 'description': 'Echo back the value received', 'bindable': True, 'plans': [big_plan]}
 
-invert_service = {'id': 'invert_service', 'name': 'Invert Service', 'description': 'Invert the value received', 'bindable': True, 'plans': [small_plan], 'dashboard_client': None}
+invert_service = {'id': 'invert_service', 'name': 'Invert Service', 'description': 'Invert the value received', 'bindable': True, 'plans': [small_plan]}
 
 
 @bottle.error(401)
