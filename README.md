@@ -3,6 +3,10 @@ CloudFoundry Service Broker v2 implementation in Python
 
 CloudFoundry (and Stackato and HP Helion Development Platform) provide a [Service Broker API](http://docs.cloudfoundry.org/services/api.html), currently in version 2.3, that accommodates managed services, such as databases. This repository contains an implementaiton of a service broker for a [simplified echo service](https://github.com/dwatrous/cf-echo-service).
 
+[Step by step example usage in CloudFoundry](http://software.danielwatrous.com/managed-services-in-cloudfoundry/)
+
+[Step by step example usage in Stackato](http://software.danielwatrous.com/managed-services-in-stackato/)
+
 #### Dependencies
  * Python 3.x
  * bottle (http://bottlepy.org/docs/dev/index.html)
