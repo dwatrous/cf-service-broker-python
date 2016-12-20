@@ -5,7 +5,8 @@ import os
 
 # constant representing the API version supported
 # keys off HEADER X-Broker-Api-Version from Cloud Controller
-X_BROKER_API_VERSION = 2.3
+X_BROKER_API_MAJOR_VERSION = 2
+X_BROKER_API_MINOR_VERSION = 3
 X_BROKER_API_VERSION_NAME = 'X-Broker-Api-Version'
 
 # UPDATE THIS FOR YOUR ECHO SERVICE DEPLOYMENT
@@ -62,9 +63,23 @@ def catalog():
         services offered through this broker
     """
     api_version = bottle.request.headers.get('X-Broker-Api-Version')
-    if not api_version or float(api_version) < X_BROKER_API_VERSION:
-        bottle.abort(409, "Missing or incompatible %s. Expecting version %0.1f or later" % (X_BROKER_API_VERSION_NAME, X_BROKER_API_VERSION))
+    if (not api_version or not (api_version_is_valid(api_version))):
+        bottle.abort(
+            409,
+            "Missing or incompatible %s. Expecting version %.0f.%.0f or later" % (
+                X_BROKER_API_VERSION_NAME,
+                X_BROKER_API_MAJOR_VERSION,
+                X_BROKER_API_MINOR_VERSION))
     return {"services": [echo_service, invert_service]}
+
+def api_version_is_valid(api_version):
+    version_data = api_version.split('.')
+    result = True
+    if (float(version_data[0]) < X_BROKER_API_MAJOR_VERSION
+        or (float(version_data[0]) == X_BROKER_API_MAJOR_VERSION
+            and float(version_data[1]) < X_BROKER_API_MINOR_VERSION)):
+                result = False
+    return result
 
 
 @bottle.route('/v2/service_instances/<instance_id>', method='PUT')
